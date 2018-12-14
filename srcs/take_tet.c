@@ -6,12 +6,11 @@
 /*   By: tcherret <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 15:17:43 by tcherret          #+#    #+#             */
-/*   Updated: 2018/12/07 17:44:01 by tcherret         ###   ########.fr       */
+/*   Updated: 2018/12/13 17:25:58 by tcherret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
-#include <stdio.h>
 
 void	transpo(char *s, t_tet *new, int i, int nb)
 {
@@ -55,10 +54,6 @@ int		take_tet(char *s, t_tet **tet, int nb)
 		return (-1);
 	new->p = nb;
 	get_coor(s, new);
-	/*printf("%d\n", new->coor[0]);
-	printf("%d\n", new->coor[1]);
-	printf("%d\n", new->coor[2]);
-	printf("%d\n", new->coor[3]);*/
 	new->next = NULL;
 	if (*tet == NULL)
 	{

@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_size.c                                         :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcherret <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/13 17:26:11 by tcherret          #+#    #+#             */
-/*   Updated: 2018/12/13 18:00:42 by tcherret         ###   ########.fr       */
+/*   Created: 2018/11/09 16:16:45 by tcherret          #+#    #+#             */
+/*   Updated: 2018/11/09 18:28:20 by tcherret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "libft.h"
 
-int		get_size(int nb)
+char	*ft_strnew(size_t size)
 {
-	int i;
+	char		*str;
+	size_t		i;
 
-	i = 2;
-	while (i * i < nb * 4)
+	if (!(str = (char *)malloc(sizeof(*str) * (size + 1))))
+		return (NULL);
+	i = 0;
+	while (i < size)
+	{
+		str[i] = '\0';
 		i++;
-	return (i);
+	}
+	str[i] = '\0';
+	return (str);
 }

@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_size.c                                         :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcherret <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/13 17:26:11 by tcherret          #+#    #+#             */
-/*   Updated: 2018/12/13 18:00:42 by tcherret         ###   ########.fr       */
+/*   Created: 2018/11/09 15:26:33 by tcherret          #+#    #+#             */
+/*   Updated: 2018/11/10 14:07:57 by tcherret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "libft.h"
 
-int		get_size(int nb)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int i;
+	size_t			i;
+	unsigned char	*ptr;
 
-	i = 2;
-	while (i * i < nb * 4)
+	i = 0;
+	ptr = (unsigned char *)s;
+	while (i < n)
+	{
+		if (ptr[i] == (unsigned char)c)
+			return (&ptr[i]);
 		i++;
-	return (i);
+	}
+	return (NULL);
 }

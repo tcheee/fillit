@@ -6,7 +6,7 @@
 /*   By: tcherret <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 15:17:43 by tcherret          #+#    #+#             */
-/*   Updated: 2018/12/07 17:32:23 by tcherret         ###   ########.fr       */
+/*   Updated: 2018/12/13 18:00:02 by tcherret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,20 @@ int		check_tet2(char *s)
 	return (t);
 }
 
+int		check_tet3(int sum, char *s, int *t, int *nb)
+{
+	int b;
+
+	b = 0;
+	if (sum > 545)
+		b = -1;
+	if (check_tet(s) == -1)
+		b = -1;
+	*t = *t + check_tet2(s);
+	(*nb)++;
+	return (b);
+}
+
 int		verif_take_tet(const int fd, t_tet **tet)
 {
 	int		ret;
@@ -96,12 +110,8 @@ int		verif_take_tet(const int fd, t_tet **tet)
 			return (-1);
 		s[ret] = '\0';
 		sum = sum + ret;
-		if (sum > 545)
+		if (check_tet3(sum, s, &t, &nb) == -1)
 			return (-1);
-		if (check_tet(s) == -1)
-			return (-1);
-		t = t + check_tet2(s);
-		nb++;
 		if (take_tet(s, tet, nb) == -1)
 			return (-1);
 	}

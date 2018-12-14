@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_size.c                                         :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcherret <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/13 17:26:11 by tcherret          #+#    #+#             */
-/*   Updated: 2018/12/13 18:00:42 by tcherret         ###   ########.fr       */
+/*   Created: 2018/11/13 15:55:33 by tcherret          #+#    #+#             */
+/*   Updated: 2018/11/14 13:53:23 by tcherret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "libft.h"
 
-int		get_size(int nb)
+void	ft_lstdel(t_list **alst, void (*del)(void*, size_t))
 {
-	int i;
+	t_list	*tmp;
 
-	i = 2;
-	while (i * i < nb * 4)
-		i++;
-	return (i);
+	while (*alst)
+	{
+		tmp = (*alst)->next;
+		ft_lstdelone(alst, del);
+		*alst = tmp;
+	}
 }

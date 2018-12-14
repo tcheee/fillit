@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_size.c                                         :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcherret <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/13 17:26:11 by tcherret          #+#    #+#             */
-/*   Updated: 2018/12/13 18:00:42 by tcherret         ###   ########.fr       */
+/*   Created: 2018/11/09 14:45:38 by tcherret          #+#    #+#             */
+/*   Updated: 2018/11/13 10:55:17 by tcherret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "libft.h"
 
-int		get_size(int nb)
+char	*ft_strnstr(const char *hay, const char *need, size_t len)
 {
-	int i;
+	size_t	i;
+	size_t	j;
 
-	i = 2;
-	while (i * i < nb * 4)
+	i = 0;
+	if (len == 0)
+		return (NULL);
+	if (*need == '\0')
+		return ((char*)hay);
+	while (hay[i] != '\0' && i < len)
+	{
+		j = 0;
+		while (hay[i + j] == need[j] && hay[i + j] != '\0' && need[j] != '\0'
+				&& (i + j) < len)
+			j++;
+		if (need[j] == '\0')
+			return ((char *)&hay[i]);
 		i++;
-	return (i);
+	}
+	return (NULL);
 }

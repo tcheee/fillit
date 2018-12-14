@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_size.c                                         :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcherret <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/13 17:26:11 by tcherret          #+#    #+#             */
-/*   Updated: 2018/12/13 18:00:42 by tcherret         ###   ########.fr       */
+/*   Created: 2018/11/09 16:11:41 by tcherret          #+#    #+#             */
+/*   Updated: 2018/11/22 15:14:20 by tcherret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "libft.h"
 
-int		get_size(int nb)
+void	*ft_memalloc(size_t size)
 {
-	int i;
+	void	*mem;
 
-	i = 2;
-	while (i * i < nb * 4)
-		i++;
-	return (i);
+	if (!(mem = (void *)malloc(size)))
+		return (NULL);
+	ft_memset(mem, 0, size);
+	return (mem);
 }

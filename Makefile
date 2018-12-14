@@ -6,19 +6,19 @@
 #    By: tcherret <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 18:55:44 by tcherret          #+#    #+#              #
-#    Updated: 2018/12/07 17:44:49 by tcherret         ###   ########.fr        #
+#    Updated: 2018/12/14 15:51:02 by tcherret         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
-CC = gcc 
+NAMELIB = ./libft/libft.a
 
-FLAG = -Wall -Wextra -Werror
+CC = gcc
+
+CFLAGS =-Wall -Wextra -Werror -I ./includes/
 
 SRC_DIR = ./srcs/
-
-INC_DIR = ./includes/
 
 RM = /bin/rm -f
 
@@ -27,24 +27,24 @@ SRC = 	$(SRC_DIR)main.c \
 		$(SRC_DIR)solve_tet.c \
    		$(SRC_DIR)verif_take_tet.c \
 		$(SRC_DIR)take_tet.c \
-		$(SRC_DIR)get_size.c	
+		$(SRC_DIR)get_size.c
 
 OBJ = $(SRC:%.c=%.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ) 
-	$(CC) $(FLAG) -o $@ $^ libft/libft.a -I $(INC_DIR)
-
-%.o: %.c
-	$(CC) $(FLAG) -o $@ -c $^ -I $(INC_DIR)
+$(NAME): $(OBJ)
+	make -C ./libft/
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(NAMELIB)
 
 clean:
-	$(RM) $(OBJ)
+	make clean -C ./libft/
+	$(RM) $(OBJ) $(OBJLIB)
 
 fclean: clean
-	$(RM) $(NAME)
+	make fclean -C ./libft/
+	$(RM) $(NAME) $(NAMELIB)
 
 re: fclean all
 
-.PHONY: $(NAME) all clean fclean re
+.PHONY: all clean fclean re

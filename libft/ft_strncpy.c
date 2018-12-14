@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_size.c                                         :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcherret <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/13 17:26:11 by tcherret          #+#    #+#             */
-/*   Updated: 2018/12/13 18:00:42 by tcherret         ###   ########.fr       */
+/*   Created: 2018/11/09 14:06:06 by tcherret          #+#    #+#             */
+/*   Updated: 2018/11/09 14:10:50 by tcherret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "libft.h"
 
-int		get_size(int nb)
+char	*ft_strncpy(char *dst, const char *src, size_t n)
 {
-	int i;
+	size_t i;
+	size_t len_src;
 
-	i = 2;
-	while (i * i < nb * 4)
+	i = 0;
+	len_src = ft_strlen(src);
+	while (i < n)
+	{
+		if (i > len_src)
+			dst[i] = '\0';
+		else
+			dst[i] = src[i];
 		i++;
-	return (i);
+	}
+	return (dst);
 }

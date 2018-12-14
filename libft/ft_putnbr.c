@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_size.c                                         :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcherret <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/13 17:26:11 by tcherret          #+#    #+#             */
-/*   Updated: 2018/12/13 18:00:42 by tcherret         ###   ########.fr       */
+/*   Created: 2018/07/09 12:43:34 by tcherret          #+#    #+#             */
+/*   Updated: 2018/11/09 17:27:41 by tcherret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "libft.h"
 
-int		get_size(int nb)
+void	ft_putnbr(int nb)
 {
-	int i;
-
-	i = 2;
-	while (i * i < nb * 4)
-		i++;
-	return (i);
+	if (nb == -2147483648)
+	{
+		ft_putnbr(-214748364);
+		ft_putchar('0' + 8);
+		return ;
+	}
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		nb = -nb;
+	}
+	if (nb < 10)
+	{
+		ft_putchar('0' + nb);
+		return ;
+	}
+	ft_putnbr(nb / 10);
+	ft_putnbr(nb % 10);
 }

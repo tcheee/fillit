@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_size.c                                         :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcherret <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/13 17:26:11 by tcherret          #+#    #+#             */
-/*   Updated: 2018/12/13 18:00:42 by tcherret         ###   ########.fr       */
+/*   Created: 2018/11/09 15:09:52 by tcherret          #+#    #+#             */
+/*   Updated: 2018/11/14 13:04:30 by tcherret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "libft.h"
 
-int		get_size(int nb)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	int i;
+	size_t			i;
+	unsigned char	*ptrd;
+	unsigned char	*ptrs;
 
-	i = 2;
-	while (i * i < nb * 4)
+	ptrd = (unsigned char *)dst;
+	ptrs = (unsigned char *)src;
+	i = 0;
+	while (i < n)
+	{
+		ptrd[i] = ptrs[i];
 		i++;
-	return (i);
+	}
+	return (dst);
 }

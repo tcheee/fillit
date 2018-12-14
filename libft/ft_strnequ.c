@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_size.c                                         :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcherret <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/13 17:26:11 by tcherret          #+#    #+#             */
-/*   Updated: 2018/12/13 18:00:42 by tcherret         ###   ########.fr       */
+/*   Created: 2018/11/09 16:38:21 by tcherret          #+#    #+#             */
+/*   Updated: 2018/11/14 11:40:49 by tcherret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "libft.h"
 
-int		get_size(int nb)
+int	ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	int i;
+	size_t i;
 
-	i = 2;
-	while (i * i < nb * 4)
-		i++;
-	return (i);
+	i = 0;
+	if (!s1 || !s2)
+		return (0);
+	if (n == 0)
+		return (1);
+	while (s1[i] != '\0' && s2[i] != '\0' && i < n - 1)
+	{
+		if (s1[i] == s2[i])
+			i++;
+		else
+			return (0);
+	}
+	if (s1[i] != s2[i])
+		return (0);
+	return (1);
 }

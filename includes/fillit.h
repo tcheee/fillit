@@ -6,7 +6,7 @@
 /*   By: tcherret <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 16:22:36 by tcherret          #+#    #+#             */
-/*   Updated: 2018/12/08 15:32:07 by tcherret         ###   ########.fr       */
+/*   Updated: 2018/12/13 16:30:37 by tcherret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct	s_tet
 
 int				verif_take_tet(const int fd, t_tet **tet);
 char			*map_generator(int size);
-int				solve_tet(char **map, t_tet *current, int t);
+int				solve_tet(char **map, t_tet *current, int t, int size);
 int				take_tet(char *s, t_tet **tet, int nb);
 int				get_size(int nb);
 
